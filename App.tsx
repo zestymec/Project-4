@@ -16,13 +16,14 @@ const App = () => {
     for (let i = 0; i < 6; i++) {
       color += hexRange[Math.floor(Math.random() * 16)];
     }
+    setRandombg(color);
   };
 
   return (
     <>
-      <StatusBar backgroundColor={'red'} />
-      <View style={styles.conatainer}>
-        <TouchableOpacity>
+      <StatusBar backgroundColor={randombg} />
+      <View style={[styles.conatainer, { backgroundColor: randombg }]}>
+        <TouchableOpacity onPress={generateColor}>
           <View style={styles.actionbutton}>
             <Text>Press me</Text>
           </View>
