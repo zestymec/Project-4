@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import Box from './box';
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 
 const App = () => {
   const [randombg, setRandombg] = useState('pink');
@@ -22,8 +23,13 @@ const App = () => {
     }
     return color;
   };
-
+  const options = {
+    enableVibrateFallback: true,
+    ignoreAndroidSystemSettings: true, 
+  };
   const handlePress = () => {
+    console.log("abc")
+    ReactNativeHapticFeedback.trigger("impactHeavy", options);
     setRandombg(getRandomColor());
     setB1(getRandomColor());
     setB2(getRandomColor());
@@ -60,7 +66,7 @@ const App = () => {
       </TouchableOpacity>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Created by Umer the Hero</Text>
+        <Text style={styles.footerText}>POWERED by Umer the Hero</Text>
       </View>
     </View>
   );
